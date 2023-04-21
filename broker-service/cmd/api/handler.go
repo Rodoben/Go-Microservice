@@ -63,6 +63,8 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayLoad) {
 	// make sure we get back the correct status code
 	log.Println("_________________PPPPPPPPPPPPPPP_____________")
 	log.Println("STATUS CODE:", res.StatusCode)
+	log.Println("RES BODY:", res.Body)
+	log.Println("RES:", res)
 	if res.StatusCode == http.StatusUnauthorized {
 		app.errorJSON(w, errors.New("invalid credentials"))
 		return
@@ -72,7 +74,7 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayLoad) {
 
 	}
 
-	var jsonFromService jsonResponse
+	var jsonFromService jsonResponse1
 
 	err = json.NewDecoder(res.Body).Decode(&jsonFromService)
 	if err != nil {
@@ -84,7 +86,7 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayLoad) {
 		return
 	}
 
-	var payload jsonResponse
+	var payload jsonResponse1
 	payload.Error = false
 	payload.Message = "Authenticated!"
 	payload.Data = jsonFromService.Data

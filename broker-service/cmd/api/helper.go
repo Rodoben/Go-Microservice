@@ -2,11 +2,15 @@ package main
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
 )
 
 type jsonResponse struct {
+	Error   bool   `json:"error"`
+	Message string `json:"message"`
+	Data    []any  `json:"data,omitempty"`
+}
+type jsonResponse1 struct {
 	Error   bool   `json:"error"`
 	Message string `json:"message"`
 	Data    any    `json:"data,omitempty"`
@@ -28,17 +32,13 @@ func (app *Config) writeJson(w http.ResponseWriter, status int, data any, header
 	if err != nil {
 		return err
 	}
-	log.Println("OUT:", out)
-	log.Println("OUT:", string(out))
-	log.Println("ERROR:", err)
-	log.Println("LENOFHEADER1:", len(headers))
+
 	if len(headers) > 0 {
-		log.Println("HEADER[0]:", headers[0])
+
 		for key, value := range headers[0] {
 			w.Header()[key] = value
 		}
 	}
-	log.Println("LENOFHEADER2:", len(headers))
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
