@@ -1,0 +1,22 @@
+{
+    "folders": [
+        {
+            "path": "D:/GO/GoLang/Microservices/go-micro/front-end"
+        },
+        {
+            "path": "D:/GO/GoLang/Microservices/go-micro/broker-service"
+        },
+        {
+            "path": "D:/GO/GoLang/Microservices/go-micro/Project"
+        },
+        {
+            "path": "D:/GO/GoLang/Microservices/go-micro/logger-service"
+        }, {
+            "path": "D:/GO/GoLang/Microservices/go-micro/mail-service"
+        }, {
+            "path": "D:/GO/GoLang/Microservices/go-micro/auth-service"
+        }, {
+            "path": "listener-service"
+        }
+    ]
+}
