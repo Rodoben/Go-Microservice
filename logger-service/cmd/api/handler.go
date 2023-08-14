@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"loggerservice/data"
 	"net/http"
 )
@@ -20,6 +21,8 @@ func (app *Config) WriteLog(w http.ResponseWriter, r *http.Request) {
 		Name: requestpayload.Name,
 		Data: requestpayload.Data,
 	}
+
+	log.Println("EVENT:", event)
 
 	err := app.Model.LogEntry.Insert(event)
 	if err != nil {
